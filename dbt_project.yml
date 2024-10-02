@@ -1,0 +1,31 @@
+
+name: 'estudo_dbt_postgre'
+version: '1.0.0'
+
+
+profile: 'estudo_dbt_postgre'
+
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         
+  - "target"
+  - "dbt_packages"
+
+models:
+  estudo_dbt_postgre:
+    staging:
+      +materialized: table
+      +schema: STG
+    dimension:
+      +materialized: table
+      +schema: DW
+    fact:
+      +materialized: table
+      +schema: DW
+
